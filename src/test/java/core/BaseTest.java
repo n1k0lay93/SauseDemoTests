@@ -40,7 +40,7 @@ public class BaseTest {
     public void resetApp() {
 
         // Navigate to Google.com
-        driver.get("https://www.saucedemo.com/inventory.html");
+        driver.get(INVENTORY_URL);
         wait = new WebDriverWait(driver, Duration.ofSeconds(30));
 
         //Click Burger Button

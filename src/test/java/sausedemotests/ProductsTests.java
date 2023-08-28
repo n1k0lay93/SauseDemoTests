@@ -31,10 +31,10 @@ public class ProductsTests extends BaseTest {
     @BeforeEach
     public void setupTests() {
         //Navigate to Home page
-        driver.get("https://www.saucedemo.com/");
+        driver.get(BASE_URL);
 
         //Login
-        authenticateWithUser("standard_user", "secret_sauce");
+        authenticateWithUser(USERNAME, PASSWORD);
 
         //Add products to Cart
         addToCart(BACKPACK);
@@ -69,7 +69,7 @@ public class ProductsTests extends BaseTest {
 
 
         // fill form
-        fillShippingDetails("First Name", "Last Name", "Zip Code");
+        fillShippingDetails(FIRST_NAME, LAST_NAME, ZIPCODE);
 
         driver.findElement(By.id("continue")).click();
 
@@ -97,7 +97,7 @@ public class ProductsTests extends BaseTest {
         driver.findElement(By.id("checkout")).click();
 
         // Fill Contact Details
-        fillShippingDetails("First Name", "Last Name", "Zip Code");
+        fillShippingDetails(FIRST_NAME, LAST_NAME, ZIPCODE);
         driver.findElement(By.id("continue")).click();
 
         //Assert Prices and Totals
@@ -120,9 +120,5 @@ public class ProductsTests extends BaseTest {
         Assertions.assertEquals(completedOrderTitleText, completedOrderTitle.getText(), "Order completed title not found");
         assertArraySize(products,0);
     }
-
-
-
-
 
 }

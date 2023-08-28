@@ -10,6 +10,8 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 
 import java.time.Duration;
 
+import static org.example.Constants.Constants.*;
+
 public class LoginTests extends BaseTest {
 
     @BeforeAll
@@ -20,12 +22,12 @@ public class LoginTests extends BaseTest {
         wait = new WebDriverWait(driver, Duration.ofSeconds(30));
 
         // Navigate to Google.com
-        driver.get("https://www.saucedemo.com/");
+        driver.get(BASE_URL);
     }
 
     @Test
     public void userAuthenticated_when_validCredentialsProvided(){
-        authenticateWithUser("standard_user", "secret_sauce");
+        authenticateWithUser(USERNAME, PASSWORD);
 
         // Add Assert
         String appLogoText = "Swag Labs";

@@ -121,36 +121,7 @@ public class ProductsTests extends BaseTest {
         assertArraySize(products,0);
     }
 
-    private static void assertProductPrice(List<WebElement> prices) {
-        Assertions.assertEquals(T_SHIRT.price, prices.get(1).getText(), ERROR_MSG_PRICE);
-        Assertions.assertEquals(BACKPACK.price, prices.get(0).getText(), ERROR_MSG_PRICE);
-    }
 
-    private static void assertProductLabel(List<WebElement> items) {
-        Assertions.assertEquals(BACKPACK.label, items.get(0).getText(), ERROR_MSG_PRODUCT_NOT_FOUND);
-        Assertions.assertEquals(T_SHIRT.label, items.get(1).getText(), ERROR_MSG_PRODUCT_NOT_FOUND);
-    }
-
-    private static void assertArraySize(List<WebElement> items, int size) {
-        Assertions.assertEquals(size, items.size(), ERROR_MSG_SIZE);
-    }
-
-    private static String actualTotalPrice() {
-        var prices = driver.findElements(By.className("inventory_item_price"));
-        double sum = 0;
-
-        for (int i = 0; i < prices.size(); i++) {
-            sum += Double.parseDouble(driver.findElements(By.className("inventory_item_price")).get(i).getText().replaceAll("[$]", " "));
-        }
-
-        double endPrice = sum + sum * 0.08;
-        String endPriceString = String.format("Total: $%.2f", endPrice);
-        return endPriceString;
-    }
-
-    private static void assertTotalPrice(String expected, String actual) {
-        Assertions.assertEquals(expected, actual, ERROR_MSG_PRICE);
-    }
 
 
 
